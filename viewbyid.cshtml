@@ -1,0 +1,44 @@
+model leaveapp.Models.tblemp_328
+@{
+    ViewBag.Title = "viewleave";
+}
+
+<h2>viewleave</h2>
+<table class="table">
+    @using (Html.BeginForm())
+    {
+
+        <tr>
+            <th>employeeID</th>
+            <th>name</th>
+            <th>leaveID</th>
+            <th>leave type</th>
+            <th>leave date</th>
+            <th>leave reason</th>
+            <th>leave status</th>
+            <th>leave remark</th>
+            <th>action</th>
+        </tr>
+
+    }
+
+
+
+    @foreach (var v in ViewBag.Table)
+    {
+
+        <tr>
+            <td>@v.empid</td>
+            <td>@v.name</td>
+            <td>@v.lid</td>
+            <td>@v.ltype</td>
+            <td>@v.ldate</td>
+            <td>@v.reason</td>
+            <td>@v.stat</td>
+            <td>@v.remark</td>
+            <td>@Html.ActionLink("approve/reject", "update")</td>
+        </tr>
+
+    }
+</table>
+
