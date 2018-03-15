@@ -1,0 +1,34 @@
+@model leaveapp.Models.tblemp_328
+@{
+    ViewBag.Title = "viewleave";
+}
+
+<h2>viewleave</h2>
+<table class="table">
+    @using (Html.BeginForm())
+    {
+
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>no of leaves</th>
+            <th>action</th>
+        </tr>
+
+    }
+
+
+
+    @foreach (var v in ViewBag.Table)
+    {
+
+        <tr>
+            <td>@v.eid</td>
+            <td>@v.name</td>
+            <td>@v.noOfleaves</td>
+            <td>@Html.ActionLink("show pending leaves", "viewid", new { id = v.eid })</td>
+        </tr>
+
+    }
+    </table>
+
