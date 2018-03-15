@@ -1,0 +1,2 @@
+  @Html.ActionLink("login", "login", "leave", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("logout", "logout", "leave", new { area = "" }, new { @class = "navbar-brand" })
