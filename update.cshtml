@@ -1,0 +1,41 @@
+@model leaveapp.Models.tblleave_328
+@{
+    ViewBag.Title = "update";
+}
+
+<h2>update</h2>
+@using (Html.BeginForm())
+{
+
+    <div>
+        @Html.LabelFor(a => a.lid)
+        <div>
+            @Html.TextBoxFor(a => a.lid)
+            @Html.ValidationMessageFor(a => a.lid)
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(a=>a.stat)
+        <div>
+            @Html.DropDownListFor(a=>a.stat ,new List<SelectListItem>() { new SelectListItem() {Text="pending" }, new SelectListItem() { Text = "approve" }, new SelectListItem() { Text = "reject" } })
+            @Html.ValidationMessageFor(a=>a.stat)
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.remark)
+        <div>
+            @Html.TextAreaFor(a => a.remark)
+            @Html.ValidationMessageFor(a => a.remark)
+        </div>
+    </div>
+
+    <div>
+        
+        <input type="submit" value="update">
+    </div>
+
+     
+}
+
