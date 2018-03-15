@@ -1,0 +1,45 @@
+use db01test01
+
+create table tblemp_328(empid int primary key identity(1000,1),name varchar(30),pwd varchar(20),supid int)
+
+insert into tblemp_328 values('aarush','aarush',null)
+
+select * from tblemp_328
+
+create table tblleave_328(lid int primary key identity(5000,1),ltype varchar(10),ldate date,eid int foreign key references tblemp_328(empid),reason varchar(20),stat varchar(10),remark varchar(30))
+
+insert into tblleave_328 values('sick','3/16/2018',1002,'fever','pending','')
+
+select * from tblleave_328
+
+alter proc
+sp_tblemp_328
+as
+begin
+select l.eid,e.name,count(l.eid) as noOfleaves from tblemp_328 as e join tblleave_328 as l on e.empid=l.eid group by e.name,l.eid
+end
+
+create proc
+sp_tblemp2_328
+as
+begin
+select l.eid,e.name,count(l.eid) as noOfleaves from tblemp_328 as e join tblleave_328 as l on e.empid=l.eid group by e.name,l.eid
+end
+
+create proc 
+sp_tblemp_viewall2_328
+@id int
+as
+begin
+select e.empid,e.name,l.lid,l.ltype,l.ldate,l.reason,l.stat,l.remark from tblemp_328 as e join tblleave_328 as l on e.empid=l.eid
+where e.empid=@id or l.lid=@id
+end
+
+create proc
+sp_tblemp_update2_328
+@sstat varchar(10),@sremark varchar(30),@slid int
+as
+begin
+update  tblleave_328 set stat=@sstat,remark=@sremark where lid=@slid
+end
+
